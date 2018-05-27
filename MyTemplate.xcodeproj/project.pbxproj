@@ -19,6 +19,7 @@
 		89BF62D620BB13C500F2A987 /* Store+Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62D520BB13C500F2A987 /* Store+Observable.swift */; };
 		89BF62DB20BB14F400F2A987 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62DA20BB14F400F2A987 /* AssociatedObject.swift */; };
 		89BF62DD20BB153C00F2A987 /* Reactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62DC20BB153C00F2A987 /* Reactor.swift */; };
+		89BF62E120BB177F00F2A987 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62E020BB177F00F2A987 /* CounterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		89BF62D520BB13C500F2A987 /* Store+Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+Observable.swift"; sourceTree = "<group>"; };
 		89BF62DA20BB14F400F2A987 /* AssociatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociatedObject.swift; sourceTree = "<group>"; };
 		89BF62DC20BB153C00F2A987 /* Reactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reactor.swift; sourceTree = "<group>"; };
+		89BF62E020BB177F00F2A987 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		FFC9B50E376272FD6012407B /* Pods-MyTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTemplate.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyTemplate/Pods-MyTemplate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 				89B8347620BB1022008C905D /* Reducer */,
 				89BF62D920BB14D400F2A987 /* Utils */,
 				89BF62DE20BB164A00F2A987 /* ViewControllers */,
+				89BF62DF20BB176A00F2A987 /* Views */,
 			);
 			path = MyTemplate;
 			sourceTree = "<group>";
@@ -144,6 +147,14 @@
 				897790A620BB0ED100A958C4 /* ViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		89BF62DF20BB176A00F2A987 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89BF62E020BB177F00F2A987 /* CounterView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		DEEF0E705E1D97C230E8908B /* Frameworks */ = {
@@ -282,6 +293,7 @@
 				89BF62D420BB12B800F2A987 /* App.swift in Sources */,
 				897790A520BB0ED100A958C4 /* AppDelegate.swift in Sources */,
 				89BF62D120BB114100F2A987 /* CounterAction.swift in Sources */,
+				89BF62E120BB177F00F2A987 /* CounterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
