@@ -16,6 +16,7 @@
 		89B8347520BB101A008C905D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B8347420BB101A008C905D /* Store.swift */; };
 		89B8347820BB1033008C905D /* CountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B8347720BB1033008C905D /* CountState.swift */; };
 		89BF62D120BB114100F2A987 /* CounterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62D020BB114100F2A987 /* CounterAction.swift */; };
+		89BF62D420BB12B800F2A987 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62D320BB12B800F2A987 /* App.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		89B8347420BB101A008C905D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		89B8347720BB1033008C905D /* CountState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountState.swift; sourceTree = "<group>"; };
 		89BF62D020BB114100F2A987 /* CounterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterAction.swift; sourceTree = "<group>"; };
+		89BF62D320BB12B800F2A987 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		FFC9B50E376272FD6012407B /* Pods-MyTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTemplate.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyTemplate/Pods-MyTemplate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 				897790AB20BB0ED100A958C4 /* Assets.xcassets */,
 				897790AD20BB0ED100A958C4 /* LaunchScreen.storyboard */,
 				897790B020BB0ED100A958C4 /* Info.plist */,
+				89BF62D220BB12AE00F2A987 /* App */,
 				89B8347920BB111B008C905D /* Action */,
 				89B8347320BB1009008C905D /* Store */,
 				89B8347620BB1022008C905D /* Reducer */,
@@ -111,6 +114,14 @@
 				89BF62D020BB114100F2A987 /* CounterAction.swift */,
 			);
 			path = Action;
+			sourceTree = "<group>";
+		};
+		89BF62D220BB12AE00F2A987 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				89BF62D320BB12B800F2A987 /* App.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		DEEF0E705E1D97C230E8908B /* Frameworks */ = {
@@ -242,6 +253,7 @@
 				89B8347520BB101A008C905D /* Store.swift in Sources */,
 				89B8347820BB1033008C905D /* CountState.swift in Sources */,
 				897790A720BB0ED100A958C4 /* ViewController.swift in Sources */,
+				89BF62D420BB12B800F2A987 /* App.swift in Sources */,
 				897790A520BB0ED100A958C4 /* AppDelegate.swift in Sources */,
 				89BF62D120BB114100F2A987 /* CounterAction.swift in Sources */,
 			);
