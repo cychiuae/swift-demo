@@ -16,7 +16,7 @@ struct Style<View: UIView> {
     }
 
     public func compose(_ styles: Style<View>...) -> Style<View> {
-        return Style { view in 
+        return Style { view in
             for style in styles {
                 style.apply(to: view)
             }
