@@ -20,6 +20,7 @@
 		89BF62DB20BB14F400F2A987 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62DA20BB14F400F2A987 /* AssociatedObject.swift */; };
 		89BF62DD20BB153C00F2A987 /* Reactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62DC20BB153C00F2A987 /* Reactor.swift */; };
 		89BF62E120BB177F00F2A987 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62E020BB177F00F2A987 /* CounterView.swift */; };
+		89BF62E320BB197B00F2A987 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62E220BB197B00F2A987 /* Style.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		89BF62DA20BB14F400F2A987 /* AssociatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociatedObject.swift; sourceTree = "<group>"; };
 		89BF62DC20BB153C00F2A987 /* Reactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reactor.swift; sourceTree = "<group>"; };
 		89BF62E020BB177F00F2A987 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
+		89BF62E220BB197B00F2A987 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		FFC9B50E376272FD6012407B /* Pods-MyTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTemplate.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyTemplate/Pods-MyTemplate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				89BF62DA20BB14F400F2A987 /* AssociatedObject.swift */,
+				89BF62E220BB197B00F2A987 /* Style.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				897790A520BB0ED100A958C4 /* AppDelegate.swift in Sources */,
 				89BF62D120BB114100F2A987 /* CounterAction.swift in Sources */,
 				89BF62E120BB177F00F2A987 /* CounterView.swift in Sources */,
+				89BF62E320BB197B00F2A987 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
