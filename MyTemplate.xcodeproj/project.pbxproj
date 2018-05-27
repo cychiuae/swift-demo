@@ -19,6 +19,7 @@
 		89BF62D420BB12B800F2A987 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62D320BB12B800F2A987 /* App.swift */; };
 		89BF62D620BB13C500F2A987 /* Store+Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62D520BB13C500F2A987 /* Store+Observable.swift */; };
 		89BF62DB20BB14F400F2A987 /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62DA20BB14F400F2A987 /* AssociatedObject.swift */; };
+		89BF62DD20BB153C00F2A987 /* Reactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62DC20BB153C00F2A987 /* Reactor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		89BF62D320BB12B800F2A987 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		89BF62D520BB13C500F2A987 /* Store+Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Store+Observable.swift"; sourceTree = "<group>"; };
 		89BF62DA20BB14F400F2A987 /* AssociatedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociatedObject.swift; sourceTree = "<group>"; };
+		89BF62DC20BB153C00F2A987 /* Reactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reactor.swift; sourceTree = "<group>"; };
 		FFC9B50E376272FD6012407B /* Pods-MyTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTemplate.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyTemplate/Pods-MyTemplate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				89BF62D320BB12B800F2A987 /* App.swift */,
+				89BF62DC20BB153C00F2A987 /* Reactor.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				89B8347520BB101A008C905D /* Store.swift in Sources */,
 				89B8347820BB1033008C905D /* CountState.swift in Sources */,
 				89BF62D620BB13C500F2A987 /* Store+Observable.swift in Sources */,
+				89BF62DD20BB153C00F2A987 /* Reactor.swift in Sources */,
 				897790A720BB0ED100A958C4 /* ViewController.swift in Sources */,
 				89BF62D420BB12B800F2A987 /* App.swift in Sources */,
 				897790A520BB0ED100A958C4 /* AppDelegate.swift in Sources */,
