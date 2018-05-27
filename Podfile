@@ -10,5 +10,6 @@ target 'MyTemplate' do
   pod 'RxCocoa', '4.1.2'
   pod 'RxSwift', '4.1.2'
   pod 'RxSwiftExt', '3.2.0'
+  pod 'SnapKit', '4.0.0'
 
 end
