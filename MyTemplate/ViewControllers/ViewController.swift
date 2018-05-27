@@ -23,11 +23,15 @@ fileprivate enum styles {
     static let decrementButton = Style<UIButton> {
         $0.backgroundColor = UIColor.green
     }
+    static let nextScreenButton = Style<UIButton> {
+        $0.setTitleColor(UIColor.black, for: .normal)
+    }
 }
 
 protocol ViewControllerActionDelegate: class {
     func didPressIncrementButton()
     func didPressDecrementButton()
+    func didPressIncrement2Button()
 }
 
 struct ViewControllerState: Equatable {
@@ -55,6 +59,12 @@ extension ViewControllerReactor: ViewControllerActionDelegate {
     func didPressDecrementButton() {
         CounterActionCreator.decrement(by: 1, app: self.app)
     }
+
+    func didPressIncrement2Button() {
+        self.setState { (state, _) -> ViewControllerState in
+            return ViewControllerState(count: (state.count + 1) * 2)
+        }
+    }
 }
 
 class ViewController: UIViewController, StatefulComponent {
@@ -80,6 +90,18 @@ class ViewController: UIViewController, StatefulComponent {
         button.setTitle("Decrement", for: .normal)
         return button
     }()
+    private let incrementButton2: UIButton = {
+        let button = UIButton()
+        button.apply(styles.incrementButton)
+        button.setTitle("Increment 2", for: .normal)
+        return button
+    }()
+    private let nextScreenButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Next", for: .normal)
+        button.apply(styles.nextScreenButton)
+        return button
+    }()
 
     override func loadView() {
         self.view = UIView()
@@ -91,6 +113,8 @@ class ViewController: UIViewController, StatefulComponent {
         self.view.addSubview(self.counterView)
         self.view.addSubview(self.incrementButton)
         self.view.addSubview(self.decrementButton)
+        self.view.addSubview(self.incrementButton2)
+        self.view.addSubview(self.nextScreenButton)
 
         self.counterView.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -105,6 +129,15 @@ class ViewController: UIViewController, StatefulComponent {
             make.height.equalTo(40)
             make.width.equalTo(self.incrementButton)
             make.right.bottom.equalToSuperview()
+        }
+        self.incrementButton2.snp.makeConstraints { make in
+            make.height.equalTo(40)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(self.incrementButton.snp.top)
+        }
+        self.nextScreenButton.snp.makeConstraints { make in
+            make.right.equalToSuperview()
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.topMargin)
         }
     }
 
@@ -124,16 +157,59 @@ class ViewController: UIViewController, StatefulComponent {
 
         self.incrementButton.rx.tap
             .asObservable()
-            .do(onNext: {
-                self.actionDelegate?.didPressIncrementButton()
+            .do(onNext: { [weak self] _ in
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.actionDelegate?.didPressIncrementButton()
             })
             .subscribe()
             .disposed(by: self.disposeBag)
 
         self.decrementButton.rx.tap
             .asObservable()
-            .do(onNext: {
-                self.actionDelegate?.didPressIncrementButton()
+            .do(onNext: { [weak self] _ in
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.actionDelegate?.didPressDecrementButton()
+            })
+            .subscribe()
+            .disposed(by: self.disposeBag)
+
+        self.incrementButton2.rx.tap
+            .asObservable()
+            .do(onNext: { [weak self] _ in
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.actionDelegate?.didPressIncrement2Button()
+            })
+            .subscribe()
+            .disposed(by: self.disposeBag)
+
+        self.nextScreenButton.rx.tap
+            .asObservable()
+            .withLatestFrom(
+                Observable.combineLatest(
+                    self.reactor.state,
+                    counterStateObservable,
+                    resultSelector: {
+                        DoubleCounterViewControllerRouteProps(
+                            message: "From ViewController",
+                            count0: $0.count,
+                            count1: $1.count
+                        )
+                    }
+                )
+            )
+            .do(onNext: { [weak self] routeProps in
+                guard let strongSelf = self else {
+                    return
+                }
+                let doubleCounterViewController = DoubleCounterViewController(routeProps: routeProps)
+                strongSelf.navigationController?.pushViewController(doubleCounterViewController,
+                                                                    animated: true)
             })
             .subscribe()
             .disposed(by: self.disposeBag)

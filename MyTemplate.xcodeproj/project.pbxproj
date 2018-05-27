@@ -22,6 +22,7 @@
 		89BF62E120BB177F00F2A987 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62E020BB177F00F2A987 /* CounterView.swift */; };
 		89BF62E320BB197B00F2A987 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62E220BB197B00F2A987 /* Style.swift */; };
 		89BF62E520BB1E8100F2A987 /* UIViewController+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62E420BB1E8100F2A987 /* UIViewController+App.swift */; };
+		89BF62E720BB280B00F2A987 /* DoubleCounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62E620BB280B00F2A987 /* DoubleCounterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		89BF62E020BB177F00F2A987 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		89BF62E220BB197B00F2A987 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		89BF62E420BB1E8100F2A987 /* UIViewController+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+App.swift"; sourceTree = "<group>"; };
+		89BF62E620BB280B00F2A987 /* DoubleCounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleCounterViewController.swift; sourceTree = "<group>"; };
 		FFC9B50E376272FD6012407B /* Pods-MyTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTemplate.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyTemplate/Pods-MyTemplate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +151,7 @@
 		89BF62DE20BB164A00F2A987 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				89BF62E620BB280B00F2A987 /* DoubleCounterViewController.swift */,
 				897790A620BB0ED100A958C4 /* ViewController.swift */,
 				89BF62E420BB1E8100F2A987 /* UIViewController+App.swift */,
 			);
@@ -295,6 +298,7 @@
 				89BF62E520BB1E8100F2A987 /* UIViewController+App.swift in Sources */,
 				89B8347820BB1033008C905D /* CountState.swift in Sources */,
 				89BF62D620BB13C500F2A987 /* Store+Observable.swift in Sources */,
+				89BF62E720BB280B00F2A987 /* DoubleCounterViewController.swift in Sources */,
 				89BF62DD20BB153C00F2A987 /* Reactor.swift in Sources */,
 				897790A720BB0ED100A958C4 /* ViewController.swift in Sources */,
 				89BF62D420BB12B800F2A987 /* App.swift in Sources */,
