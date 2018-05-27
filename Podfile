@@ -6,6 +6,7 @@ target 'MyTemplate' do
   use_frameworks!
 
   # Pods for MyTemplate
+  pod 'ReSwift', '4.0.1'
   pod 'RxCocoa', '4.1.2'
   pod 'RxSwift', '4.1.2'
   pod 'RxSwiftExt', '3.2.0'
