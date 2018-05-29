@@ -15,6 +15,8 @@ import SnapKit
 struct ViewControllerRouteProps {
     let countObservable: Observable<Int>
     let doubleCounterViewControllerFactory: DoubleCounterViewControllerFactory
+    let incrementCountUseCaseFactory: IncrementCountUseCaseFactory
+    let decrementCountUseCaseFacotry: DecrementCountUseCaseFactory
 }
 
 fileprivate enum styles {
@@ -33,16 +35,11 @@ fileprivate enum styles {
     }
 }
 
-protocol ViewControllerActionDelegate: class {
-    func didPressIncrementButton()
-    func didPressDecrementButton()
-    func didPressIncrement2Button()
-}
-
 class ViewController: UIViewController {
-    private weak var actionDelegate: ViewControllerActionDelegate?
     private let countObservable: Observable<Int>
     private let doubleCounterViewControllerFactory: DoubleCounterViewControllerFactory
+    private let incrementCountUseCaseFactory: IncrementCountUseCaseFactory
+    private let decrementCountUseCaseFacotry: DecrementCountUseCaseFactory
     private var disposeBag = DisposeBag()
 
     private let counterView = CounterView()
@@ -74,6 +71,8 @@ class ViewController: UIViewController {
     init(routeProps: ViewControllerRouteProps) {
         self.countObservable = routeProps.countObservable
         self.doubleCounterViewControllerFactory = routeProps.doubleCounterViewControllerFactory
+        self.incrementCountUseCaseFactory = routeProps.incrementCountUseCaseFactory
+        self.decrementCountUseCaseFacotry = routeProps.decrementCountUseCaseFacotry
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -132,10 +131,7 @@ class ViewController: UIViewController {
         self.incrementButton.rx.tap
             .asObservable()
             .do(onNext: { [weak self] _ in
-                guard let strongSelf = self else {
-                    return
-                }
-                strongSelf.actionDelegate?.didPressIncrementButton()
+                self?.didPressIncrementButton()
             })
             .subscribe()
             .disposed(by: self.disposeBag)
@@ -143,10 +139,7 @@ class ViewController: UIViewController {
         self.decrementButton.rx.tap
             .asObservable()
             .do(onNext: { [weak self] _ in
-                guard let strongSelf = self else {
-                    return
-                }
-                strongSelf.actionDelegate?.didPressDecrementButton()
+                self?.didPressDecrementButton()
             })
             .subscribe()
             .disposed(by: self.disposeBag)
@@ -154,10 +147,7 @@ class ViewController: UIViewController {
         self.incrementButton2.rx.tap
             .asObservable()
             .do(onNext: { [weak self] _ in
-                guard let strongSelf = self else {
-                    return
-                }
-                strongSelf.actionDelegate?.didPressIncrement2Button()
+                self?.didPressIncrement2Button()
             })
             .subscribe()
             .disposed(by: self.disposeBag)
@@ -165,13 +155,7 @@ class ViewController: UIViewController {
         self.nextScreenButton.rx.tap
             .asObservable()
             .do(onNext: { [weak self] _ in
-                guard let strongSelf = self else {
-                    return
-                }
-                let doubleCounterViewController =
-                    strongSelf.doubleCounterViewControllerFactory.makeDoubleCounterViewController()
-                strongSelf.navigationController?.pushViewController(doubleCounterViewController,
-                                                                    animated: true)
+                self?.didPressNextScreenButton()
             })
             .subscribe()
             .disposed(by: self.disposeBag)
@@ -180,5 +164,28 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.disposeBag = DisposeBag()
+    }
+}
+
+extension ViewController {
+    func didPressIncrementButton() {
+        let useCase = self.incrementCountUseCaseFactory.makeIncrementCountUseCase()
+        useCase.start()
+    }
+
+    func didPressDecrementButton() {
+        let useCase = self.decrementCountUseCaseFacotry.makeDecrementCountUseCase()
+        useCase.start()
+    }
+
+    func didPressIncrement2Button() {
+        let useCase = self.incrementCountUseCaseFactory.makeIncrementCountUseCase()
+        useCase.start()
+    }
+
+    func didPressNextScreenButton() {
+        let doubleCounterViewController = self.doubleCounterViewControllerFactory.makeDoubleCounterViewController()
+        self.navigationController?.pushViewController(doubleCounterViewController,
+                                                      animated: true)
     }
 }

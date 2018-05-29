@@ -20,7 +20,9 @@ extension TemplateApp: ViewControllerFactory {
         let countObservable = self.makeCountObservable()
         let viewControllerRouteProps = ViewControllerRouteProps(
             countObservable: countObservable,
-            doubleCounterViewControllerFactory: self
+            doubleCounterViewControllerFactory: self,
+            incrementCountUseCaseFactory: self,
+            decrementCountUseCaseFacotry: self
         )
         let v = ViewController(routeProps: viewControllerRouteProps)
         return v

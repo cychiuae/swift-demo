@@ -10,8 +10,7 @@ import Foundation
 import RxSwift
 
 protocol UseCase {
-    associatedtype ReturnType
-    func start() -> Observable<ReturnType>
+    func start()
 }
 
 protocol Cancelable {
@@ -21,15 +20,13 @@ protocol Cancelable {
 typealias CancelableUseCase = Cancelable & UseCase
 
 class TodoUseCase: UseCase {
-    typealias ReturnType = String
     let todoAction: String
 
     init(todoAction: String) {
         self.todoAction = todoAction
     }
 
-    func start() -> Observable<String> {
+    func start() {
         print("TODO: \(self.todoAction)")
-        return Observable.just(self.todoAction)
     }
 }

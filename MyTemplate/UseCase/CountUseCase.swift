@@ -11,16 +11,34 @@ import Foundation
 import ReSwift
 import RxSwift
 
+protocol IncrementCountUseCaseFactory: class {
+    func makeIncrementCountUseCase() -> UseCase
+}
+
+protocol DecrementCountUseCaseFactory: class {
+    func makeDecrementCountUseCase() -> UseCase
+}
+
 class IncrementCountUseCase: UseCase {
-    typealias ReturnType = Void
     let reduxStore: Store<RootState>
 
     init(reduxStore: Store<RootState>) {
         self.reduxStore = reduxStore
     }
 
-    func start() -> Observable<Void> {
+    func start() {
         self.reduxStore.dispatch(CounterAction.Increment(amount: 1))
-        return Observable.just(())
+    }
+}
+
+class DecrementCountUseCase: UseCase {
+    let reduxStore: Store<RootState>
+
+    init(reduxStore: Store<RootState>) {
+        self.reduxStore = reduxStore
+    }
+
+    func start() {
+        self.reduxStore.dispatch(CounterAction.Decrement(amount: 1))
     }
 }
