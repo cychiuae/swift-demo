@@ -20,6 +20,8 @@ func counterStateReducer(state: CounterState?, action: Action) -> CounterState {
         newState.count = newState.count + amount
     case CounterAction.Decrement(let amount):
         newState.count = newState.count - amount
+    case ComputativeAction.didPerformComputativeAction(let result):
+        newState.count = newState.count + result
     default:
         break
     }

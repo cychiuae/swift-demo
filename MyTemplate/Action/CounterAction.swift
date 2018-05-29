@@ -13,3 +13,9 @@ enum CounterAction: Action {
     case Increment(amount: Int)
     case Decrement(amount: Int)
 }
+
+enum ComputativeAction: Action {
+    case willPerformComputativeAction
+    case didPerformComputativeAction(result: Int)
+    case didRejectPerformComputativeAction(error: Error)
+}

@@ -10,12 +10,19 @@ import Foundation
 
 extension TemplateApp: IncrementCountUseCaseFactory {
     func makeIncrementCountUseCase() -> UseCase {
-        return IncrementCountUseCase(reduxStore: self.store)
+//        return IncrementCountUseCase(reduxStore: self.store)
+        return ComputativeUseCase(reduxStore: self.store, computer: FakeComputer())
     }
 }
 
 extension TemplateApp: DecrementCountUseCaseFactory {
     func makeDecrementCountUseCase() -> UseCase {
         return DecrementCountUseCase(reduxStore: self.store)
+    }
+}
+
+extension TemplateApp: ComputativeUseCaseFactory {
+    func makeComputativeUseCase() -> UseCase {
+        return ComputativeUseCase(reduxStore: self.store, computer: FakeComputer())
     }
 }

@@ -17,6 +17,7 @@
 		89B36A4A20BD8037000AA3F2 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B36A4920BD8037000AA3F2 /* UseCase.swift */; };
 		89B36A4C20BD80C8000AA3F2 /* CountUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B36A4B20BD80C8000AA3F2 /* CountUseCase.swift */; };
 		89B36A4F20BD84C5000AA3F2 /* TemplateApp+UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B36A4E20BD84C5000AA3F2 /* TemplateApp+UseCaseFactory.swift */; };
+		89B36A5220BD86FE000AA3F2 /* Computer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B36A5120BD86FE000AA3F2 /* Computer.swift */; };
 		89B8347520BB101A008C905D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B8347420BB101A008C905D /* Store.swift */; };
 		89B8347820BB1033008C905D /* CountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B8347720BB1033008C905D /* CountState.swift */; };
 		89BF62D120BB114100F2A987 /* CounterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62D020BB114100F2A987 /* CounterAction.swift */; };
@@ -43,6 +44,7 @@
 		89B36A4920BD8037000AA3F2 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		89B36A4B20BD80C8000AA3F2 /* CountUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountUseCase.swift; sourceTree = "<group>"; };
 		89B36A4E20BD84C5000AA3F2 /* TemplateApp+UseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TemplateApp+UseCaseFactory.swift"; sourceTree = "<group>"; };
+		89B36A5120BD86FE000AA3F2 /* Computer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Computer.swift; sourceTree = "<group>"; };
 		89B8347420BB101A008C905D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		89B8347720BB1033008C905D /* CountState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountState.swift; sourceTree = "<group>"; };
 		89BF62D020BB114100F2A987 /* CounterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterAction.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				897790AD20BB0ED100A958C4 /* LaunchScreen.storyboard */,
 				89BF62D220BB12AE00F2A987 /* App */,
 				89B8347920BB111B008C905D /* Action */,
+				89B36A5020BD86EC000AA3F2 /* Computer */,
 				89B8347320BB1009008C905D /* Store */,
 				89B8347620BB1022008C905D /* Reducer */,
 				89B36A4820BD8015000AA3F2 /* UseCase */,
@@ -130,6 +133,14 @@
 				89B36A4E20BD84C5000AA3F2 /* TemplateApp+UseCaseFactory.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		89B36A5020BD86EC000AA3F2 /* Computer */ = {
+			isa = PBXGroup;
+			children = (
+				89B36A5120BD86FE000AA3F2 /* Computer.swift */,
+			);
+			path = Computer;
 			sourceTree = "<group>";
 		};
 		89B8347320BB1009008C905D /* Store */ = {
@@ -343,6 +354,7 @@
 				89B8347520BB101A008C905D /* Store.swift in Sources */,
 				89BF62E520BB1E8100F2A987 /* UIViewController+App.swift in Sources */,
 				89B8347820BB1033008C905D /* CountState.swift in Sources */,
+				89B36A5220BD86FE000AA3F2 /* Computer.swift in Sources */,
 				89B36A4C20BD80C8000AA3F2 /* CountUseCase.swift in Sources */,
 				89BF62D620BB13C500F2A987 /* Store+Observable.swift in Sources */,
 				89BF62E720BB280B00F2A987 /* DoubleCounterViewController.swift in Sources */,

@@ -167,6 +167,7 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: Actions
 extension ViewController {
     func didPressIncrementButton() {
         let useCase = self.incrementCountUseCaseFactory.makeIncrementCountUseCase()
