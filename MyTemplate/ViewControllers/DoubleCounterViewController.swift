@@ -81,12 +81,12 @@ class DoubleCounterViewController: UIViewController {
 
         self.routeProps
             .map { CounterViewProps(count: $0.count0) }
-            .bind(to: self.counterView0.reactor.props)
+            .bind(to: self.counterView0.props)
             .disposed(by: self.disposeBag)
 
         self.routeProps
             .map { CounterViewProps(count: $0.count1) }
-            .bind(to: self.counterView1.reactor.props)
+            .bind(to: self.counterView1.props)
             .disposed(by: self.disposeBag)
     }
 

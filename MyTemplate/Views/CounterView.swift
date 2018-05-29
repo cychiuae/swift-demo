@@ -14,19 +14,13 @@ struct CounterViewProps: Equatable {
     let count: Int
 }
 
-class CounterViewReactor: StatelessReactor {
-    typealias Props = CounterViewProps
-    let defaultProps = CounterViewProps(count: 0)
-}
-
-class CounterView: UILabel, StatelessComponent {
-    typealias Reactor = CounterViewReactor
-    let reactor = Reactor()
+class CounterView: UILabel {
+    let props: BehaviorRelay<CounterViewProps> = BehaviorRelay(value: CounterViewProps(count: -1))
     let disposeBag = DisposeBag()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.reactor.props.asObservable()
+        self.props
             .distinctUntilChanged()
             .map({ "Count: \($0.count)"})
             .bind(to: self.rx.text)

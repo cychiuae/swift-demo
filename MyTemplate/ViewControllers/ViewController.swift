@@ -126,7 +126,7 @@ class ViewController: UIViewController {
         self.countObservable
             .observeOn(scheduler)
             .map { CounterViewProps(count: $0) }
-            .bind(to: self.counterView.reactor.props)
+            .bind(to: self.counterView.props)
             .disposed(by: self.disposeBag)
 
         self.incrementButton.rx.tap
