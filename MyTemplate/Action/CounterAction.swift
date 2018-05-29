@@ -14,7 +14,12 @@ enum CounterAction: Action {
     case Decrement(amount: Int)
 }
 
-class CounterActionCreator {
+protocol CounterActionCreatorI: class {
+  static func increment(by amount: Int, app: App)
+  static func decrement(by amount: Int, app: App)
+}
+
+class CounterActionCreator: CounterActionCreatorI {
     static func increment(by amount: Int, app: App) {
         app.store.dispatch(CounterAction.Increment(amount: amount))
     }

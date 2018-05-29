@@ -16,14 +16,6 @@ DEPENDENCIES:
   - RxSwiftExt (= 3.2.0)
   - SnapKit (= 4.0.0)
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - ReSwift
-    - RxCocoa
-    - RxSwift
-    - RxSwiftExt
-    - SnapKit
-
 SPEC CHECKSUMS:
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
@@ -33,4 +25,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: a113fa5203ec8a2f0392de870842bef054f5680f
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.4.0

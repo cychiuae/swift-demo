@@ -12,6 +12,8 @@
 		897790A720BB0ED100A958C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897790A620BB0ED100A958C4 /* ViewController.swift */; };
 		897790AC20BB0ED100A958C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 897790AB20BB0ED100A958C4 /* Assets.xcassets */; };
 		897790AF20BB0ED100A958C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 897790AD20BB0ED100A958C4 /* LaunchScreen.storyboard */; };
+		89B36A4520BD7F3B000AA3F2 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B36A4420BD7F3B000AA3F2 /* ViewControllerFactory.swift */; };
+		89B36A4720BD7F88000AA3F2 /* Template+ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B36A4620BD7F88000AA3F2 /* Template+ViewControllerFactory.swift */; };
 		89B8347520BB101A008C905D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B8347420BB101A008C905D /* Store.swift */; };
 		89B8347820BB1033008C905D /* CountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B8347720BB1033008C905D /* CountState.swift */; };
 		89BF62D120BB114100F2A987 /* CounterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BF62D020BB114100F2A987 /* CounterAction.swift */; };
@@ -34,6 +36,8 @@
 		897790AB20BB0ED100A958C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		897790AE20BB0ED100A958C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		897790B020BB0ED100A958C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89B36A4420BD7F3B000AA3F2 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		89B36A4620BD7F88000AA3F2 /* Template+ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Template+ViewControllerFactory.swift"; sourceTree = "<group>"; };
 		89B8347420BB101A008C905D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		89B8347720BB1033008C905D /* CountState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountState.swift; sourceTree = "<group>"; };
 		89BF62D020BB114100F2A987 /* CounterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterAction.swift; sourceTree = "<group>"; };
@@ -104,6 +108,15 @@
 			path = MyTemplate;
 			sourceTree = "<group>";
 		};
+		89B36A4320BD7F14000AA3F2 /* ViewControllerFactory */ = {
+			isa = PBXGroup;
+			children = (
+				89B36A4420BD7F3B000AA3F2 /* ViewControllerFactory.swift */,
+				89B36A4620BD7F88000AA3F2 /* Template+ViewControllerFactory.swift */,
+			);
+			path = ViewControllerFactory;
+			sourceTree = "<group>";
+		};
 		89B8347320BB1009008C905D /* Store */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +164,7 @@
 		89BF62DE20BB164A00F2A987 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				89B36A4320BD7F14000AA3F2 /* ViewControllerFactory */,
 				89BF62E620BB280B00F2A987 /* DoubleCounterViewController.swift */,
 				897790A620BB0ED100A958C4 /* ViewController.swift */,
 				89BF62E420BB1E8100F2A987 /* UIViewController+App.swift */,
@@ -186,6 +200,7 @@
 				8977909E20BB0ED100A958C4 /* Frameworks */,
 				8977909F20BB0ED100A958C4 /* Resources */,
 				9F52482B973CA2FABAD3DFA5 /* [CP] Embed Pods Frameworks */,
+				13DEB5EF0912091B0458B0F6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,6 +257,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		13DEB5EF0912091B0458B0F6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyTemplate/Pods-MyTemplate-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7F0634B7C6570F06D6BC2FAE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -299,12 +329,14 @@
 				89B8347820BB1033008C905D /* CountState.swift in Sources */,
 				89BF62D620BB13C500F2A987 /* Store+Observable.swift in Sources */,
 				89BF62E720BB280B00F2A987 /* DoubleCounterViewController.swift in Sources */,
+				89B36A4520BD7F3B000AA3F2 /* ViewControllerFactory.swift in Sources */,
 				89BF62DD20BB153C00F2A987 /* Reactor.swift in Sources */,
 				897790A720BB0ED100A958C4 /* ViewController.swift in Sources */,
 				89BF62D420BB12B800F2A987 /* App.swift in Sources */,
 				897790A520BB0ED100A958C4 /* AppDelegate.swift in Sources */,
 				89BF62D120BB114100F2A987 /* CounterAction.swift in Sources */,
 				89BF62E120BB177F00F2A987 /* CounterView.swift in Sources */,
+				89B36A4720BD7F88000AA3F2 /* Template+ViewControllerFactory.swift in Sources */,
 				89BF62E320BB197B00F2A987 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

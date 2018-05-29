@@ -12,6 +12,11 @@ import RxSwift
 import RxSwiftExt
 import SnapKit
 
+struct ViewControllerRouteProps {
+    let countObservable: Observable<Int>
+    let doubleCounterViewControllerFactory: DoubleCounterViewControllerFactory
+}
+
 fileprivate enum styles {
     static let container = Style<UIView> {
         $0.backgroundColor = UIColor.white
@@ -34,47 +39,10 @@ protocol ViewControllerActionDelegate: class {
     func didPressIncrement2Button()
 }
 
-struct ViewControllerState: Equatable {
-    let count: Int
-}
-
-class ViewControllerReactor: StatefulReactor {
-    typealias State = ViewControllerState
-    typealias Props = Void
-    let defaultProps: Void = ()
-    var initialState = ViewControllerState(count: 0)
-
-    let app: App
-
-    init(app: App) {
-        self.app = app
-    }
-}
-
-extension ViewControllerReactor: ViewControllerActionDelegate {
-    func didPressIncrementButton() {
-        CounterActionCreator.increment(by: 1, app: self.app)
-    }
-
-    func didPressDecrementButton() {
-        CounterActionCreator.decrement(by: 1, app: self.app)
-    }
-
-    func didPressIncrement2Button() {
-        self.setState { (state, _) -> ViewControllerState in
-            return ViewControllerState(count: (state.count + 1) * 2)
-        }
-    }
-}
-
-class ViewController: UIViewController, StatefulComponent {
-    typealias Reactor = ViewControllerReactor
-    lazy var reactor: Reactor = {
-        let reactor = Reactor(app: self.app)
-        self.actionDelegate = reactor
-        return reactor
-    }()
+class ViewController: UIViewController {
     private weak var actionDelegate: ViewControllerActionDelegate?
+    private let countObservable: Observable<Int>
+    private let doubleCounterViewControllerFactory: DoubleCounterViewControllerFactory
     private var disposeBag = DisposeBag()
 
     private let counterView = CounterView()
@@ -102,6 +70,16 @@ class ViewController: UIViewController, StatefulComponent {
         button.apply(styles.nextScreenButton)
         return button
     }()
+
+    init(routeProps: ViewControllerRouteProps) {
+        self.countObservable = routeProps.countObservable
+        self.doubleCounterViewControllerFactory = routeProps.doubleCounterViewControllerFactory
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
+    }
 
     override func loadView() {
         self.view = UIView()
@@ -145,12 +123,8 @@ class ViewController: UIViewController, StatefulComponent {
         super.viewWillAppear(animated)
 
         let scheduler = ConcurrentDispatchQueueScheduler(qos: .userInitiated)
-        let counterStateObservable = self.app.store
-            .createObservable { $0.counterState }
-            .unwrap()
-        Observable.combineLatest(self.reactor.state, counterStateObservable, resultSelector: {$0.count + $1.count})
+        self.countObservable
             .observeOn(scheduler)
-            .unwrap()
             .map { CounterViewProps(count: $0) }
             .bind(to: self.counterView.reactor.props)
             .disposed(by: self.disposeBag)
@@ -190,24 +164,12 @@ class ViewController: UIViewController, StatefulComponent {
 
         self.nextScreenButton.rx.tap
             .asObservable()
-            .withLatestFrom(
-                Observable.combineLatest(
-                    self.reactor.state,
-                    counterStateObservable,
-                    resultSelector: {
-                        DoubleCounterViewControllerRouteProps(
-                            message: "From ViewController",
-                            count0: $0.count,
-                            count1: $1.count
-                        )
-                    }
-                )
-            )
-            .do(onNext: { [weak self] routeProps in
+            .do(onNext: { [weak self] _ in
                 guard let strongSelf = self else {
                     return
                 }
-                let doubleCounterViewController = DoubleCounterViewController(routeProps: routeProps)
+                let doubleCounterViewController =
+                    strongSelf.doubleCounterViewControllerFactory.makeDoubleCounterViewController()
                 strongSelf.navigationController?.pushViewController(doubleCounterViewController,
                                                                     animated: true)
             })
