@@ -9,20 +9,19 @@
 import Foundation
 
 extension TemplateApp: IncrementCountUseCaseFactory {
-    func makeIncrementCountUseCase() -> UseCase {
-//        return IncrementCountUseCase(reduxStore: self.store)
-        return ComputativeUseCase(reduxStore: self.store, computer: FakeComputer())
+    func makeIncrementCountUseCase() -> AnyUseCase<Int> {
+        return AnyUseCase(IncrementCountUseCase(reduxStore: self.store))
     }
 }
 
 extension TemplateApp: DecrementCountUseCaseFactory {
-    func makeDecrementCountUseCase() -> UseCase {
-        return DecrementCountUseCase(reduxStore: self.store)
+    func makeDecrementCountUseCase() -> AnyUseCase<Int> {
+        return AnyUseCase(DecrementCountUseCase(reduxStore: self.store))
     }
 }
 
 extension TemplateApp: ComputativeUseCaseFactory {
-    func makeComputativeUseCase() -> UseCase {
-        return ComputativeUseCase(reduxStore: self.store, computer: FakeComputer())
+    func makeComputativeUseCase() -> AnyUseCase<Int> {
+        return AnyUseCase(ComputativeUseCase(reduxStore: self.store, computer: FakeComputer()))
     }
 }

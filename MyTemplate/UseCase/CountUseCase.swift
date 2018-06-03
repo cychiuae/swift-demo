@@ -11,16 +11,16 @@ import Foundation
 import ReSwift
 import RxSwift
 
-protocol IncrementCountUseCaseFactory: class {
-    func makeIncrementCountUseCase() -> UseCase
+protocol IncrementCountUseCaseFactory {
+    func makeIncrementCountUseCase() -> AnyUseCase<Int>
 }
 
-protocol DecrementCountUseCaseFactory: class {
-    func makeDecrementCountUseCase() -> UseCase
+protocol DecrementCountUseCaseFactory {
+    func makeDecrementCountUseCase() -> AnyUseCase<Int>
 }
 
-protocol ComputativeUseCaseFactory: class {
-    func makeComputativeUseCase() -> UseCase
+protocol ComputativeUseCaseFactory {
+    func makeComputativeUseCase() -> AnyUseCase<Int>
 }
 
 class IncrementCountUseCase: UseCase {
@@ -30,8 +30,9 @@ class IncrementCountUseCase: UseCase {
         self.reduxStore = reduxStore
     }
 
-    func start() {
+    func start() -> Observable<Int> {
         self.reduxStore.dispatch(CounterAction.Increment(amount: 1))
+        return Observable.just(1)
     }
 }
 
@@ -42,8 +43,9 @@ class DecrementCountUseCase: UseCase {
         self.reduxStore = reduxStore
     }
 
-    func start() {
+    func start() -> Observable<Int> {
         self.reduxStore.dispatch(CounterAction.Decrement(amount: 1))
+        return Observable.just(1)
     }
 }
 
@@ -56,9 +58,12 @@ class ComputativeUseCase: UseCase {
         self.computer = computer
     }
 
-    func start() {
+    func start() -> Observable<Int> {
         self.reduxStore.dispatch(ComputativeAction.willPerformComputativeAction)
-        _ = self.computer.computeVeryComplicatedValue(input: self.reduxStore.state.counterState?.count ?? 0)
+        let observable = self.computer
+            .computeVeryComplicatedValue(input: self.reduxStore.state.counterState?.count ?? 0)
+            .share(replay: 1)
+        _ = observable
             .subscribe(
                 onNext: { i in
                     self.reduxStore.dispatch(ComputativeAction.didPerformComputativeAction(result: i))
@@ -66,5 +71,6 @@ class ComputativeUseCase: UseCase {
                 onError: { error in
                     self.reduxStore.dispatch(ComputativeAction.didRejectPerformComputativeAction(error: error))
             })
+        return observable
     }
 }
